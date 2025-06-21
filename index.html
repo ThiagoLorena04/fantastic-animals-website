@@ -7,28 +7,30 @@
   <title>Animais Fantásticos</title>
   <link rel="stylesheet" href="./css/style.css">
 
+  <!-- Preconnect apenas uma vez para cada domínio -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 
 </head>
 
 <body>
-  <nav class="menu">
+  <nav class="menu js-menu">
     <ul>
       <li><a href="#animais">Animais</a></li>
       <li><a href="#faq">Faq</a></li>
       <li><a href="#contato">Contato</a></li>
-      <li><a href="#x">Dev ↠</a></li>
+      <li><a href="#x">Dev → </a></li>
     </ul>
   </nav>
 
-  <section class="grid-section animais" id="animais">
+  <section class="grid-section animais js-scroll" id="animais">
     <h1 class="title">Animais Fantástivos</h1>
-    <ul class="animais-lista">
+    <ul class="animais-lista js-tabmenu">
       <li>
         <img src="./img/imagem1.jpg" alt="">
       </li>
@@ -49,7 +51,7 @@
       </li>
     </ul>
 
-    <div class="animais-description">
+    <div class="animais-description js-tabcontent">
       <section>
         <h2>Raposa</h2>
         <p>As raposas são mamíferos da família Canidae, semelhantes a cães, com focinho pontiagudo, orelhas eretas e uma cauda espessa. São animais oportunistas, com uma dieta que varia dependendo do habitat e das condições disponíveis, podendo incluir roedores, aves, ovos, insetos, frutos e vegetais. </p>
@@ -100,9 +102,9 @@
     </div>
   </section>
 
-  <section class="grid-section faq" id="faq">
+  <section class="grid-section faq js-scroll" id="faq">
     <h1 class="title">FAQ</h1>
-    <dl class="faq-lista">
+    <dl class="faq-lista js-accordion">
       <dt>Quais são as principais características das raposas?</dt>
       <dd>As raposas são mamíferos oportunistas, conhecidos pelo focinho pontiagudo, orelhas eretas e cauda espessa. Elas se adaptam ao habitat, caçando roedores, aves, ovos e até vegetais, e costumam viver sozinhas fora da época de reprodução.</dd>
       <dt> Os esquilos conseguem voar mesmo?</dt>
@@ -114,7 +116,7 @@
     </dl>
   </section>
 
-  <section class="grid-section contato" id="contato">
+  <section class="grid-section contato js-scroll" id="contato">
     <h1 class="title">Contato</h1>
     <div class="mapa">
       <img src="./img/mapa.png" alt="mapa da nossa localização">
