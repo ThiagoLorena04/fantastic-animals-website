@@ -80,3 +80,9 @@ function initAnimacaoScroll() {
   }
 }
 initAnimacaoScroll();
+
+Object;
+Array;
+String;
+Number;
+Function;
