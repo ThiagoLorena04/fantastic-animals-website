@@ -30,10 +30,3 @@ export default function initDropdownMenu(){
     }
 }
 
-function espera(tempo){
-    console.log("Passou 0");
-}
-
-setTimeout(function(){
-    console.log("Testando")
-}, 3000)
