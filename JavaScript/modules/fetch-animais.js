@@ -3,23 +3,30 @@ import initAnimaNumeros from "./anima-numeros.js";
 export default function initFetchAnimais() {
   async function fetchAnimais(url) {
     try {
-      const animaisResponse = await fetch(url);
-      const animaisJSON = await animaisResponse.json();
+      const response = await fetch(url);
+      const data = await response.json();
+
       const numerosGrid = document.querySelector(".numeros-grid");
-      animaisJSON.forEach((animal) => {
-        const divAnimal = createAnimal(animal);
-        numerosGrid.appendChild(divAnimal);
+      if (!numerosGrid || !data.length) return;
+
+      data.forEach((animal) => {
+        const div = createAnimal(animal);
+        numerosGrid.appendChild(div);
       });
+
       initAnimaNumeros();
     } catch (erro) {
-      console.log(erro);
+      console.error("Erro ao buscar ou processar os animais:", erro);
     }
   }
 
   function createAnimal(animal) {
     const div = document.createElement("div");
     div.classList.add("numeros-animal");
-    div.innerHTML = `<h3>${animal.specie}</h3><span data-numero> ${animal.total}</span>`;
+    div.innerHTML = `
+      <h3>${animal?.specie || "?"}</h3>
+      <span data-numero>${animal?.total || 0}</span>
+    `;
     return div;
   }
 

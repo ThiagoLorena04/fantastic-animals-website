@@ -9,23 +9,32 @@ export default function initDropdownMenu() {
 
   function handleClick(event) {
     event.preventDefault();
-    this.classList.add("active");
-    outsideClick(this, () => {
-      this.classList.remove("active");
-    });
+
+    const element = this;
+    const alreadyOpen = element.hasAttribute("data-outside");
+
+    if (!alreadyOpen) {
+      element.classList.add("active");
+
+      outsideClick(element, () => {
+        element.classList.remove("active");
+      });
+    }
   }
 
   function outsideClick(element, callback) {
     const html = document.documentElement;
-    const outsite = "data-outside";
+    const outsideAttr = "data-outside";
 
-    html.addEventListener("click", handleOutsideClick);
-    element.setAttribute(outsite, "");
     function handleOutsideClick(event) {
       if (!element.contains(event.target)) {
         html.removeEventListener("click", handleOutsideClick);
+        element.removeAttribute(outsideAttr);
         callback();
       }
     }
+
+    html.addEventListener("click", handleOutsideClick);
+    element.setAttribute(outsideAttr, "");
   }
 }

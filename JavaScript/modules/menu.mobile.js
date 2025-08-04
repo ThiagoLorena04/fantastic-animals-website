@@ -3,26 +3,31 @@ export default function initMenuMobile() {
   const menuLista = document.querySelector("[data-menu='lista']");
   const eventos = ["click", "touchstart"];
 
-  function openMenu(event) {
+  function openMenu() {
+    if (!menuButton || !menuLista) return;
+
     const isActive = menuLista.classList.contains("active");
 
     if (isActive) {
-      // Fechar menu se já está aberto
       menuLista.classList.remove("active");
       menuButton.classList.remove("active");
       removeOutsideListener();
     } else {
-      // Abrir menu
       menuLista.classList.add("active");
       menuButton.classList.add("active");
 
-      eventos.forEach((userEvent) => {
-        document.addEventListener(userEvent, handleOutsideClick);
-      });
+      if (!menuLista.hasAttribute("data-outside")) {
+        menuLista.setAttribute("data-outside", "");
+        eventos.forEach((userEvent) => {
+          document.addEventListener(userEvent, handleOutsideClick);
+        });
+      }
     }
   }
 
   function handleOutsideClick(event) {
+    if (!menuButton || !menuLista) return;
+
     const isClickInsideMenu = menuLista.contains(event.target);
     const isClickOnButton = menuButton.contains(event.target);
 
@@ -34,10 +39,14 @@ export default function initMenuMobile() {
   }
 
   function removeOutsideListener() {
+    if (!menuLista) return;
+
+    menuLista.removeAttribute("data-outside");
     eventos.forEach((userEvent) => {
       document.removeEventListener(userEvent, handleOutsideClick);
     });
   }
+
   if (menuButton && menuLista) {
     menuButton.addEventListener("click", openMenu);
   }
